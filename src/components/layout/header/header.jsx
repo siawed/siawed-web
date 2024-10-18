@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 import styles from "./header.module.scss";
 import CustomContainer from "@/components/ui/custom_container/custom_container";
-// import Image from "next/image";
 import Link from "next/link";
 import { List, Plus, X } from "react-bootstrap-icons";
 import { Image } from "react-bootstrap";
@@ -10,6 +9,8 @@ import CustomButton from "@/components/ui/custom_button/custom_button";
 import { useRouter } from "next/router";
 import HeaderDrawer from "./header_drawer/header_drawer";
 import PAGES from "@/constants/pages";
+import { signOut } from "firebase/auth";
+import { auth } from "@/libs/firebase/firebase";
 
 const MenuButton = ({ pages, router }) => {
   const [showHeader, setShowHeader] = useState(false);
@@ -33,8 +34,8 @@ const MenuButton = ({ pages, router }) => {
   );
 };
 
-const Header = () => {
-  const pages =  PAGES;
+const Header = ({ currentUser }) => {
+  const pages = PAGES;
 
   const router = useRouter();
 
@@ -63,7 +64,21 @@ const Header = () => {
                     </li>
                   );
                 })}
-                <CustomButton>Donate Us</CustomButton>
+                {!currentUser ? (
+                  <CustomButton href="/donate-us">Donate Us</CustomButton>
+                ) : (
+                  <div>
+                    <CustomButton href="/account">My Account</CustomButton>
+                    &nbsp; &nbsp;
+                    <CustomButton
+                      clickHandler={async () => {
+                        await signOut(auth);
+                      }}
+                    >
+                      Logout
+                    </CustomButton>
+                  </div>
+                )}
               </ul>
             </nav>
 

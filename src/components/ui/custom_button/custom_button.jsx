@@ -10,6 +10,7 @@ const CustomButton = ({
   variant = 1,
   href,
   isNew,
+  isLoading,
 }) => {
   if (href) {
     return (
@@ -34,9 +35,9 @@ const CustomButton = ({
       onClick={(e) => {
         clickHandler(e);
       }}
-      disabled={disabled}
+      disabled={disabled || isLoading}
     >
-      {children}
+      {isLoading ? "Please Wait.." : children}
     </button>
   );
 };

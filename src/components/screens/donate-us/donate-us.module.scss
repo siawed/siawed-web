@@ -1,0 +1,115 @@
+.DonateUsScreen {
+  background-color: rgb(240, 240, 240);
+  .banner {
+    background-color: black;
+    position: relative;
+    z-index: 10;
+    height: 400px;
+    @include flexCenter;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px;
+
+    h1 {
+      font-size: 70px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("/assets/images/donate-bg.jpg");
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+      background-size: cover;
+      z-index: -1;
+      background-position: center;
+    }
+
+    @include respond-below(md) {
+      h1 {
+        font-size: 50px;
+      }
+      height: 300px;
+
+      &::before {
+        background-position: top;
+      }
+    }
+  }
+
+  .cont {
+    padding: 60px 0;
+
+    .head {
+      text-align: center;
+
+      hr {
+        background-color: $color_p3;
+        height: 2px;
+        border: none;
+        opacity: 1;
+      }
+
+      color: $color_p3;
+      h2 {
+        font-size: 40px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+}
+
+.SponsorCard {
+  //   border: 1px solid $color_p1;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 20px;
+  background-color: white;
+  margin-bottom: 50px;
+  h3 {
+    color: $color_p1;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  .price {
+    font-size: 22px;
+    color: $color_p3;
+    text-align: center;
+  }
+
+  .points {
+    .point {
+      margin-bottom: 16px;
+      color: black;
+
+      &.disabled {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &.highlight {
+    background-image: linear-gradient(to right top, #9f3df4, #6d45d5);
+
+    h3,
+    p {
+      color: white !important;
+    }
+
+    @include respond-above(md) {
+      transform: scale(1.05);
+    }
+  }
+
+  .btns {
+    text-align: center;
+  }
+}

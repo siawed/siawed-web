@@ -1,8 +1,9 @@
 .custom_button {
   // background-color: red;
-  padding: 5px 50px;
+  padding: 5px 20px;
+
   border: none;
-  border-radius: 40px;
+  border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
   height: fit-content !important;
@@ -33,6 +34,6 @@
   }
 
   @include respond-below(md) {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
