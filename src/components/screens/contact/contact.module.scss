@@ -1,0 +1,107 @@
+.ContactScreen {
+  //   background: linear-gradient(37deg, $color_p1 30%, $color_p3);
+  background-color: black;
+  //   min-height: 100dvh;
+  position: relative;
+  z-index: 10;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/images/women-bg.jpg");
+    top: 0;
+    left: 0;
+    opacity: 0.35;
+    background-size: cover;
+    z-index: -1;
+  }
+
+  .contBox {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin: 150px 0 100px 0;
+    display: grid;
+    grid-template-columns: 45% 55%;
+
+    // background-color: red;
+
+    @include respond-below(md) {
+      //   grid-template-columns: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+    }
+
+    .left {
+      //   background-color: $color_p1;
+      background: linear-gradient(37deg, $color_p2 15%, $color_p1);
+
+      padding: 32px;
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 30px;
+        // height: 100%;
+
+        a {
+          font-weight: 100;
+          color: white;
+
+          &:hover {
+            color: $color_p2;
+          }
+
+          svg {
+            font-size: 16px;
+          }
+        }
+
+        .contactItem {
+          display: flex;
+          gap: 13px;
+          svg {
+            font-size: 22px;
+            // color: $color_p2;
+          }
+
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
+    .right {
+      background-color: white;
+      padding: 32px;
+      color: $color_p1;
+
+      form {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        flex-direction: column;
+        gap: 50px;
+
+        > div {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+    }
+  }
+
+  .map {
+    text-align: center;
+    padding-bottom: 50px;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+}

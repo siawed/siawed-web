@@ -1,0 +1,132 @@
+.DesignSection {
+  // background-color: $color_p1;
+  background-image: linear-gradient(
+    to right top,
+    #9f3df4,
+    #6d45d5,
+    #4443b0,
+    #283c89,
+    #1c3160
+  );
+
+  .sectionRow {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    .img {
+      background-color: $color_p2;
+    }
+    &.row1 {
+      .img {
+        padding: 60px 60px 60px 0;
+      }
+
+      .text {
+        // background-color: $color_p3;
+        @include flexCenter;
+        flex-direction: column;
+        padding: 0 70px;
+
+        p {
+          font-size: 60px;
+          line-height: 60px;
+          text-align: center;
+        }
+      }
+
+      // .text {
+      //   background-color: $color_p3;
+      //   @include flexCenter;
+      //   padding: 60px;
+      //   position: relative;
+
+      //   .flower {
+      //     position: absolute;
+      //     top: 0;
+      //     right: 12px;
+      //     transform: rotate(-120deg);
+
+      //     &.f2 {
+      //       transform: rotate(40deg);
+
+      //       left: -8px !important;
+      //       //   background-color: red;
+      //       top: unset;
+      //       bottom: 0;
+      //     }
+      //   }
+
+      //   h2 {
+      //     font-size: 55px;
+      //     margin-bottom: 16px;
+      //   }
+      // }
+    }
+    &.row2 {
+      .img {
+        padding: 60px 0px 60px 60px;
+      }
+
+      .text {
+        padding: 60px;
+        > div {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          .points {
+            > p {
+              font-weight: bold;
+              font-size: 18px;
+            }
+          }
+
+          li {
+            margin-bottom: 5px;
+            margin-left: 30px;
+          }
+
+          hr {
+            border: none;
+            background-color: white;
+            height: 3px;
+            opacity: 1;
+            max-width: 90%;
+          }
+
+          h2 {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  @include respond-below(md) {
+    .sectionRow {
+      display: flex;
+      flex-direction: column;
+
+      &.row1 {
+        .text {
+          padding: 40px 20px;
+          p {
+            font-size: 50px;
+          }
+        }
+      }
+
+      &.row2 {
+        .text {
+          padding: 20px;
+        }
+      }
+    }
+  }
+  @include respond-below(sm) {
+    .sectionRow {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

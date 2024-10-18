@@ -1,0 +1,19 @@
+.OathSection {
+  background-color: $color_p1;
+  padding: 50px 0;
+  h2 {
+    font-size: 55px;
+  }
+
+  p {
+    font-size: 20px;
+    margin-bottom: 4px;
+    font-weight: bold;
+  }
+
+  @include respond-below(md) {
+    p {
+      margin-bottom: 16px;
+    }
+  }
+}

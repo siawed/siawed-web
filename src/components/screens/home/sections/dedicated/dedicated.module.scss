@@ -1,0 +1,133 @@
+.DedicatedSection {
+  background-color: $color_p1;
+
+  .sectionRow {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    .img {
+      background-color: $color_p2;
+    }
+    &.row1 {
+      .img {
+        padding: 60px 60px 60px 0;
+      }
+
+      .text {
+        background-color: $color_p3;
+        @include flexCenter;
+        padding: 60px;
+        position: relative;
+
+        .flower {
+          position: absolute;
+          top: 0;
+          right: 12px;
+          transform: rotate(-120deg);
+
+          &.f2 {
+            transform: rotate(40deg);
+
+            left: -8px !important;
+            //   background-color: red;
+            top: unset;
+            bottom: 0;
+          }
+        }
+
+        h2 {
+          font-size: 55px;
+          margin-bottom: 16px;
+        }
+      }
+    }
+    &.row2 {
+      .img {
+        padding: 60px 0px 60px 60px;
+      }
+
+      .text {
+        padding: 60px;
+        > div {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          hr {
+            border: none;
+            background-color: white;
+            height: 3px;
+            opacity: 1;
+            max-width: 90%;
+          }
+
+          h2 {
+            font-size: 55px;
+          }
+
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+
+  @include respond-below(md) {
+    .sectionRow {
+      display: flex;
+      flex-direction: column;
+
+      &.row1 {
+        .text {
+          padding: 100px 20px;
+
+          h2 {
+            font-size: 45px;
+          }
+
+          .flower {
+            width: 140px;
+          }
+        }
+      }
+
+      &.row2 {
+        .text {
+          padding: 20px;
+        }
+      }
+    }
+  }
+  @include respond-below(sm) {
+    .sectionRow {
+      display: flex;
+      flex-direction: column;
+
+      &.row1 {
+        .text {
+          padding: 150px 20px;
+
+          h2 {
+            font-size: 45px;
+          }
+
+          .flower {
+            width: 120px;
+            right: 0;
+            transform: rotate(-130deg);
+
+            &.f2 {
+              transform: rotate(40deg);
+
+              left: -8px !important;
+              //   background-color: red;
+              top: unset;
+              bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

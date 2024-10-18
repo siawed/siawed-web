@@ -1,0 +1,32 @@
+.SoldiersSection {
+  background-color: $color_p1;
+
+  h2 {
+    text-align: center;
+    font-size: 55px;
+  }
+
+  .wrap {
+    background-color: $color_p2;
+    padding: 0 220px;
+
+    // .imgCont{
+    //     padding: 0 50px;
+    // }
+  }
+
+  @include respond-below(lg) {
+    .imgCont {
+      margin-bottom: 20px;
+    }
+    .wrap {
+      padding: 0 0px;
+    }
+  }
+
+  @include respond-below(md) {
+    h2 {
+      font-size: 40px;
+    }
+  }
+}

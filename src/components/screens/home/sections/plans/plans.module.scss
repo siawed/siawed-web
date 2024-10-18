@@ -1,0 +1,45 @@
+.PlansSection {
+  background-color: $color_p3;
+  padding: 50px 0;
+  h2 {
+    text-align: center;
+    font-size: 55px;
+    margin-bottom: 24px;
+  }
+
+  @include respond-below(md) {
+    h2 {
+      font-size: 40px;
+    }
+  }
+}
+
+.PlanCard {
+  background-color: $color_p2;
+  padding: 32px 0;
+  border-radius: 20px;
+  color: $color_p1;
+
+  .head {
+    background-color: white;
+  }
+
+  .btn {
+    text-align: center;
+    margin: 24px 0;
+  }
+
+  > div {
+    padding: 20px;
+  }
+
+  .points {
+    li {
+      margin-left: 24px;
+    }
+  }
+
+  @include respond-below(md) {
+    margin: 24px;
+  }
+}

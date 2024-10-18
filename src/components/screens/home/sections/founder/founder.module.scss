@@ -1,0 +1,66 @@
+.FounderSection {
+  background-color: $color_p1;
+  padding: 50px 0 0 0;
+
+  .container {
+    padding: 0 80px;
+
+    p {
+      font-size: 19px;
+    }
+
+    .head {
+      margin-bottom: 36px;
+
+      h1 {
+        font-size: 55px;
+      }
+    }
+
+    .founderImg {
+      margin-bottom: 36px;
+    }
+
+    .right {
+      position: relative;
+
+      .flower {
+        position: absolute;
+        bottom: -36px;
+        right: 0;
+      }
+    }
+
+    .content {
+      h2 {
+        border-bottom: 4px solid white;
+        width: fit-content;
+        padding-bottom: 2px;
+        margin-bottom: 16px;
+      }
+
+      .text {
+        max-width: 600px;
+      }
+
+      .divider {
+        margin: 30px auto;
+        display: block;
+      }
+    }
+  }
+
+  @include respond-below(md) {
+    .container {
+      padding: 0;
+
+      .right {
+        padding-bottom: 250px;
+
+        .flower {
+          transform: rotate(-40deg);
+        }
+      }
+    }
+  }
+}

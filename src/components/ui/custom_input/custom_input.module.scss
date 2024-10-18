@@ -1,0 +1,14 @@
+.control {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  color: $color_p3;
+
+  outline: none;
+  border: 1px solid grey;
+
+  &:active,
+  &:focus {
+    border: 1px solid $color_p1;
+  }
+}

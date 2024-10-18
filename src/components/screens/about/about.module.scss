@@ -1,0 +1,40 @@
+.AboutScreen {
+  background-color: $color_p1;
+  .banner {
+    background-color: black;
+    position: relative;
+    z-index: 10;
+    height: 400px;
+    @include flexCenter;
+    text-align: center;
+    padding-top: 50px;
+
+    h1 {
+      font-size: 70px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("/assets/images/women-bg.jpg");
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    @include respond-below(md) {
+      h1 {
+        font-size: 50px;
+      }
+      height: 300px;
+
+      &::before {
+        background-position: top;
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.Header {
+  padding: 20px;
+  background-color: $color_p3;
+
+  button {
+    background-color: white;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+.body {
+  padding: 20px;
+
+  > div {
+    height: 60%;
+  }
+
+  nav {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    ul {
+      list-style: none;
+      li {
+        // background-color: red;
+        padding: 8px 0;
+        margin-bottom: 8px;
+        cursor: pointer;
+
+        a {
+          font-size: 18px;
+          color: $color_p3;
+        }
+
+        &:hover,
+        &.active {
+          background-color: $color_p1;
+          a {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}

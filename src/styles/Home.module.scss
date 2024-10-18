@@ -1,0 +1,33 @@
+// @import url("");
+
+@font-face {
+  font-family: "garbatta";
+  src: url("/assets/fonts/garbatta.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "garbatta-bold";
+  src: url("/assets/fonts/garbatta-bold.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.body {
+  font-family: "garbatta";
+  p {
+    font-family: "garbatta" !important;
+  }
+  color: white;
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: "garbatta-bold", sans-serif;
+  }
+
+  div[class*="floating-whatsapp-button"] {
+    right: unset !important;
+    left: 2em !important;
+  }
+}

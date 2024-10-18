@@ -1,0 +1,59 @@
+.GalleryScreen {
+  background-color: rgb(229, 229, 229);
+  .banner {
+    background-color: black;
+    position: relative;
+    z-index: 10;
+    height: 400px;
+    @include flexCenter;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px;
+
+    h1 {
+      font-size: 70px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("/assets/images/galley_bg.jpg");
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+      background-size: cover;
+      z-index: -1;
+      background-position: center;
+    }
+
+    @include respond-below(md) {
+      h1 {
+        font-size: 50px;
+      }
+      height: 300px;
+
+      &::before {
+        background-position: top;
+      }
+    }
+  }
+
+  .wrap {
+    margin: 50px 0;
+
+    .imgCont {
+      margin-bottom: 24px;
+      cursor: pointer;
+
+      img {
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      }
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
