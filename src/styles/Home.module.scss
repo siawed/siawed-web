@@ -15,6 +15,7 @@
 
 .body {
   font-family: "garbatta";
+
   p {
     font-family: "garbatta" !important;
   }
@@ -26,10 +27,8 @@
     font-family: "garbatta-bold", sans-serif;
   }
 
-  div[class*="floating-whatsapp-button"]
-  ,div[class*="floating-whatsapp-chatbox"]
-  
-  {
+  div[class*="floating-whatsapp-button"],
+  div[class*="floating-whatsapp-chatbox"] {
     right: unset !important;
     left: 2em !important;
   }
