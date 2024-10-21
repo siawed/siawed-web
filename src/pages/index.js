@@ -1,9 +1,10 @@
+import AccountScreen from "@/components/screens/account/account";
 import HomeScreen from "@/components/screens/home/home";
 
-const Home = () => {
+const Home = ({ currentUser }) => {
   return (
     <>
-      <HomeScreen />
+      <AccountScreen currentUser={currentUser} />;
     </>
   );
 };
