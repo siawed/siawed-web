@@ -11,9 +11,13 @@
 
 .body {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 
-  > div {
-    height: 60%;
+  button{
+    width: 100%;
   }
 
   nav {
@@ -44,5 +48,11 @@
         }
       }
     }
+  }
+
+  .btns{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 }

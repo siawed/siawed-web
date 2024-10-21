@@ -15,7 +15,7 @@ const AccountScreen = ({ currentUser }) => {
       {isLogin ? (
         <LoginScreen setIsLoginScreen={setIsLogin} />
       ) : (
-        <ManageAccount />
+        <ManageAccount currentUser={currentUser} />
       )}
     </div>
   );

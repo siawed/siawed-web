@@ -1,0 +1,114 @@
+.DonateUsScreen {
+  background-color: rgb(240, 240, 240);
+  .banner {
+    background-color: black;
+    position: relative;
+    z-index: 10;
+    height: 400px;
+    @include flexCenter;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 50px;
+
+    h1 {
+      font-size: 70px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-image: url("/assets/images/donate-bg.jpg");
+      top: 0;
+      left: 0;
+      opacity: 0.5;
+      background-size: cover;
+      z-index: -1;
+      background-position: center;
+    }
+
+    @include respond-below(md) {
+      h1 {
+        font-size: 50px;
+      }
+      height: 300px;
+
+      &::before {
+        background-position: top;
+      }
+    }
+  }
+
+  .cont {
+    padding: 60px 0;
+
+    .head {
+      text-align: center;
+
+      hr {
+        background-color: $color_p3;
+        height: 2px;
+        border: none;
+        opacity: 1;
+      }
+
+      color: $color_p3;
+      h2 {
+        font-size: 40px;
+        margin-bottom: 4px;
+      }
+    }
+
+    .formCont {
+      background-color: white;
+      padding: 30px 20px;
+      max-width: 700px;
+      margin: auto;
+
+      .info {
+        font-size: 24px;
+        > div {
+          > span {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+          }
+        }
+      }
+
+      p,
+      label,
+      span {
+        color: $color_p1;
+      }
+
+      span {
+        font-size: 18px;
+      }
+      > form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        section {
+          @include flexCenter;
+
+          flex-direction: column;
+          
+        }
+
+        img {
+          display: block;
+          margin: auto;
+        }
+
+        .gender {
+          label {
+            margin: 0 24px 0 5px;
+          }
+        }
+      }
+    }
+  }
+}

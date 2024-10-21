@@ -4,6 +4,7 @@ import CustomContainer from "@/components/ui/custom_container/custom_container";
 import { Col, Row } from "react-bootstrap";
 import { Check, X } from "react-bootstrap-icons";
 import CustomButton from "@/components/ui/custom_button/custom_button";
+import DONATION_PLANS from "@/constants/donation-palns";
 
 const SponsorCard = ({ data }) => {
   const { id, title, price, points, isHighlight } = data;
@@ -15,7 +16,7 @@ const SponsorCard = ({ data }) => {
         }`}
       >
         <h3>{title}</h3>
-        <p className={styles.price}>{price}</p>
+        <p className={styles.price}>₹{price}</p>
         <div className={styles.points}>
           {points.map((point, idx) => {
             return (
@@ -44,131 +45,7 @@ const SponsorCard = ({ data }) => {
 };
 
 const DonateUsScreen = () => {
-  const cards = [
-    {
-      id: "supporting",
-      title: "Supporting Sponsor",
-      price: "₹5000",
-
-      points: [
-        {
-          point: "Includes your company name & logo in all posters & fliers",
-          includes: true,
-        },
-        {
-          point: " 80 G Certificate",
-          includes: true,
-        },
-        {
-          point: "Honorary certificate",
-          includes: true,
-        },
-        {
-          point: "Advertisement in digital Newsletter - SHRISTI",
-          includes: false,
-        },
-        {
-          point:
-            "Includes your Company name & Logo in all Workshops & Webinars.",
-          includes: false,
-        },
-        {
-          point: "A short video about Company will be published in all events",
-          includes: false,
-        },
-        {
-          point: "Recognition in the event",
-          includes: false,
-        },
-        {
-          point: "Offers to share about your company",
-          includes: false,
-        },
-      ],
-    },
-    {
-      id: "title",
-      title: "Title Sponsor",
-      price: "₹15,000",
-      isHighlight: true,
-      points: [
-        {
-          point: "Includes your company name & logo in all posters & fliers",
-          includes: true,
-        },
-        {
-          point: " 80 G Certificate",
-          includes: true,
-        },
-        {
-          point: "Honorary certificate",
-          includes: true,
-        },
-        {
-          point: "Advertisement in digital Newsletter - SHRISTI",
-          includes: true,
-        },
-        {
-          point:
-            "Includes your Company name & Logo in all Workshops & Webinars.",
-          includes: true,
-        },
-        {
-          point: "A short video about Company will be published in all events",
-          includes: true,
-        },
-        {
-          point: "Recognition in the event",
-          includes: true,
-        },
-        {
-          point: "Offers to share about your company",
-          includes: true,
-        },
-      ],
-    },
-    {
-      id: "presenting",
-      title: "Presenting Sponsor",
-      price: "₹10,000",
-
-      points: [
-        {
-          point: "Includes your company name & logo in all posters & fliers",
-          includes: true,
-        },
-        {
-          point: " 80 G Certificate",
-          includes: true,
-        },
-        {
-          point: "Honorary certificate",
-          includes: true,
-        },
-        {
-          point: "Advertisement in digital Newsletter - SHRISTI",
-          includes: true,
-        },
-        {
-          point:
-            "Includes your Company name & Logo in all Workshops & Webinars.",
-          includes: true,
-        },
-        {
-          point: "A short video about Company will be published in all events",
-          includes: false,
-        },
-        {
-          point: "Recognition in the event",
-          includes: false,
-        },
-        {
-          point: "Offers to share about your company",
-          includes: false,
-        },
-      ],
-    },
-  ];
+  const cards = DONATION_PLANS;
 
   return (
     <main className={styles.DonateUsScreen}>

@@ -1,3 +1,4 @@
+import DonateScreen from "@/components/screens/account/donate/donate";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 
@@ -9,7 +10,7 @@ const DonatePage = ({ currentUser }) => {
     }
   }, [currentUser]);
 
-  return <div>wrwfgkrwnkgn</div>;
+  return <DonateScreen currentUser={currentUser} />;
 };
 
 export default DonatePage;

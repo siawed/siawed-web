@@ -26,6 +26,7 @@
   &.v_2 {
     background-color: white;
     color: $color_p1;
+    border-color: $color_p1;
 
     &:hover {
       background-color: $color_p1;
@@ -34,6 +35,6 @@
   }
 
   @include respond-below(md) {
-    font-size: 20px;
+    font-size: 18px;
   }
 }

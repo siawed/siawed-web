@@ -36,7 +36,7 @@ const Footer = () => {
                   </Link>
                 );
               })}
-              <Link href={"/donate"}>Donate Us</Link>
+              <Link href={"/donate-us"}>Donate Us</Link>
             </div>
             <div className={styles.box}>
               <h1>Contact Us</h1>

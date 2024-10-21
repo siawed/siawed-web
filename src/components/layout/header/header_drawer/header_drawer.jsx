@@ -3,8 +3,10 @@ import { Image, Modal, Offcanvas } from "react-bootstrap";
 import styles from "./header_drawer.module.scss";
 import CustomButton from "@/components/ui/custom_button/custom_button";
 import Link from "next/link";
+import { signOut } from "firebase/auth";
+import { auth } from "@/libs/firebase/firebase";
 
-const HeaderDrawer = ({ show, setShow, pages, router }) => {
+const HeaderDrawer = ({ show, setShow, pages, router, currentUser }) => {
   return (
     <Offcanvas
       show={show}
@@ -18,7 +20,7 @@ const HeaderDrawer = ({ show, setShow, pages, router }) => {
       </Modal.Header>
 
       <Modal.Body className={styles.body}>
-        <div>
+        <div className={styles.top}>
           <nav>
             <ul>
               {pages.map((page) => {
@@ -41,8 +43,48 @@ const HeaderDrawer = ({ show, setShow, pages, router }) => {
                 );
               })}
             </ul>
-            <CustomButton>Donate Us</CustomButton>
+            <CustomButton
+              href="/donate-us"
+              clickHandler={() => {
+                setShow(false);
+              }}
+            >
+              Donate Us
+            </CustomButton>
           </nav>
+        </div>
+        <div className={styles.btns}>
+          {currentUser ? (
+            <>
+              <CustomButton
+                variant={1}
+                href="/account"
+                clickHandler={() => {
+                  setShow(false);
+                }}
+              >
+                My Account
+              </CustomButton>
+              <CustomButton
+                variant={2}
+                clickHandler={async () => {
+                  await signOut(auth);
+                }}
+              >
+                Logout
+              </CustomButton>
+            </>
+          ) : (
+            <CustomButton
+              variant={2}
+              href="/account"
+              clickHandler={() => {
+                setShow(false);
+              }}
+            >
+              Login
+            </CustomButton>
+          )}
         </div>
       </Modal.Body>
     </Offcanvas>

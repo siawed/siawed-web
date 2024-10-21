@@ -12,7 +12,7 @@ import PAGES from "@/constants/pages";
 import { signOut } from "firebase/auth";
 import { auth } from "@/libs/firebase/firebase";
 
-const MenuButton = ({ pages, router }) => {
+const MenuButton = ({ pages, router, currentUser }) => {
   const [showHeader, setShowHeader] = useState(false);
 
   return (
@@ -29,6 +29,7 @@ const MenuButton = ({ pages, router }) => {
         setShow={setShowHeader}
         pages={pages}
         router={router}
+        currentUser={currentUser}
       />
     </>
   );
@@ -82,7 +83,11 @@ const Header = ({ currentUser }) => {
               </ul>
             </nav>
 
-            <MenuButton pages={pages} router={router} />
+            <MenuButton
+              pages={pages}
+              router={router}
+              currentUser={currentUser}
+            />
           </div>
         </div>
       </CustomContainer>
