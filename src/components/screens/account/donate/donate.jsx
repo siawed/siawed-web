@@ -87,7 +87,7 @@ const DonateScreen = ({ currentUser }) => {
             </div>
             <br />
             {showPaymentFor ? (
-              <PaymentForm />
+              <PaymentForm showPaymentFor={showPaymentFor} />
             ) : (
               <form onSubmit={createDonation}>
                 <CustomInput value={currentUser?.fullName} disabled />
