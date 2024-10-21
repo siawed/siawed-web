@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import LoginScreen from "./login/login";
-import { useRouter } from "next/router";
 import ManageAccount from "./manage/manage";
 
 const AccountScreen = ({ currentUser }) => {

@@ -4,7 +4,7 @@
     background-color: black;
     position: relative;
     z-index: 10;
-    height: 400px;
+    height: 200px;
     @include flexCenter;
     flex-direction: column;
     text-align: center;
@@ -32,7 +32,7 @@
       h1 {
         font-size: 50px;
       }
-      height: 300px;
+      height: 200px;
 
       &::before {
         background-position: top;
@@ -42,15 +42,5 @@
 
   .cont {
     padding: 50px 0;
-    .profile {
-      color: $color_p1;
-      background-color: white;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-      margin-bottom: 20px;
-    }
   }
 }

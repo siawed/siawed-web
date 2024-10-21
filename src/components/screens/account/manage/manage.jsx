@@ -8,17 +8,21 @@ import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
 import "ag-grid-community/styles/ag-theme-quartz.css";
 import CustomButton from "@/components/ui/custom_button/custom_button";
+import EditGallery from "./edit_gallery/edit_gallery";
 
-const ManageAccount = ({ currentUser }) => {
+const ManageAccount = () => {
   const [donations, setDonations] = useState([]);
   const [users, setUsers] = useState([]);
+  const [subscribers, setSubscribers] = useState([]);
   const fetchDonations = async () => {
     try {
       const donationsRes = await getAllData("donations");
       const usersRes = await getAllData("users");
+      const subsRef = await getAllData("subscriptions");
 
       setDonations(donationsRes || []);
       setUsers(usersRes || []);
+      setSubscribers(subsRef || []);
     } catch (error) {
       console.log(error);
     }
@@ -47,72 +51,93 @@ const ManageAccount = ({ currentUser }) => {
     { field: "referenceNumber" },
   ];
 
+  const [currentScreen, setCurrentScreen] = useState("users");
+
   return (
     <main className={styles.ManageAccount}>
       <div className={styles.banner}>
         <h1>Admin</h1>
       </div>
       <CustomContainer>
-        <div className={styles.cont}>
-          <Accordion>
-            <Accordion.Item eventKey="0">
-              <Accordion.Header>Users</Accordion.Header>
-              <Accordion.Body>
-                <div className={styles.profile}>
-                  <h2>Users</h2>
-                  <div
-                    className="ag-theme-quartz" // applying the Data Grid theme
-                    style={{ height: 200 }} // the Data Grid will fill the size of the parent container
-                  >
-                    {donations?.[0] && (
-                      <AgGridReact rowData={users} columnDefs={colDefs} />
-                    )}
-                  </div>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item>
+        {currentScreen === "users" && (
+          <div className={styles.cont}>
+            <CustomButton
+              clickHandler={() => {
+                setCurrentScreen("gallery");
+              }}
+            >
+              Edit Gallery
+            </CustomButton>
             <br />
-            <Accordion.Item eventKey="1">
-              <Accordion.Header>Donations</Accordion.Header>
-              <Accordion.Body>
-                <div className={styles.profile}>
-                  <h2>Donations</h2>
-                  <div
-                    className="ag-theme-quartz" // applying the Data Grid theme
-                    style={{ height: 500 }} // the Data Grid will fill the size of the parent container
-                  >
-                    {donations?.[0] && (
-                      <AgGridReact
-                        rowData={donations}
-                        columnDefs={donationColDefs}
-                      />
-                    )}
-                  </div>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item>
             <br />
-            <Accordion.Item eventKey="2">
-              <Accordion.Header>Subscribers</Accordion.Header>
-              <Accordion.Body>
-                <div className={styles.profile}>
-                  <h2>Subscribers</h2>
-                  <div
-                    className="ag-theme-quartz" // applying the Data Grid theme
-                    style={{ height: 500 }} // the Data Grid will fill the size of the parent container
-                  >
-                    {donations?.[0] && (
-                      <AgGridReact
-                        rowData={donations}
-                        columnDefs={donationColDefs}
-                      />
-                    )}
+            <Accordion>
+              <Accordion.Item eventKey="0">
+                <Accordion.Header>Users</Accordion.Header>
+                <Accordion.Body>
+                  <div className={styles.profile}>
+                    <h2>Users</h2>
+                    <div
+                      className="ag-theme-quartz" // applying the Data Grid theme
+                      style={{ height: 200 }} // the Data Grid will fill the size of the parent container
+                    >
+                      {donations?.[0] && (
+                        <AgGridReact rowData={users} columnDefs={colDefs} />
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Accordion.Body>
-            </Accordion.Item>
-          </Accordion>
-        </div>
+                </Accordion.Body>
+              </Accordion.Item>
+              <br />
+              <Accordion.Item eventKey="1">
+                <Accordion.Header>Donations</Accordion.Header>
+                <Accordion.Body>
+                  <div className={styles.profile}>
+                    <h2>Donations</h2>
+                    <div
+                      className="ag-theme-quartz" // applying the Data Grid theme
+                      style={{ height: 500 }} // the Data Grid will fill the size of the parent container
+                    >
+                      {donations?.[0] && (
+                        <AgGridReact
+                          rowData={donations}
+                          columnDefs={donationColDefs}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+              <br />
+              <Accordion.Item eventKey="2">
+                <Accordion.Header>Subscribers</Accordion.Header>
+                <Accordion.Body>
+                  <div className={styles.profile}>
+                    <h2>Subscribers</h2>
+                    <div
+                      className="ag-theme-quartz" // applying the Data Grid theme
+                      style={{ height: 200 }} // the Data Grid will fill the size of the parent container
+                    >
+                      {donations?.[0] && (
+                        <AgGridReact
+                          rowData={subscribers}
+                          columnDefs={[
+                            {
+                              field: "email",
+                            },
+                            {
+                              field: "createdAt",
+                            },
+                          ]}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </div>
+        )}
+        {currentScreen === "gallery" && <EditGallery />}
       </CustomContainer>
     </main>
   );
