@@ -12,6 +12,10 @@ const PAGES = [
     href: "/gallery",
   },
   {
+    name: "News Letter",
+    href: "/news-letter",
+  },
+  {
     name: "Contact Us",
     href: "/contact",
   },

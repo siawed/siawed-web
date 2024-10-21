@@ -1,3 +1,4 @@
+import NewLetterSubscriptionBox from "@/components/news_letter_subscription_box/news_letter_subscription_box";
 import CustomerSection from "./sections/customer/customer";
 import DedicatedSection from "./sections/dedicated/dedicated";
 import DesignSection from "./sections/desing/desing";
@@ -18,12 +19,12 @@ const HomeScreen = () => {
       <DedicatedSection />
       <PowerUpSection />
       <CustomerSection />
-      <SoldiersSection/>
-      <OathSection/>
-      <PlansSection/>
-      <DesignSection/>
-      <SupportSection/>
-      <FounderSection/>
+      <SoldiersSection />
+      <OathSection />
+      <PlansSection />
+      <DesignSection />
+      <SupportSection />
+      <FounderSection />
     </main>
   );
 };
