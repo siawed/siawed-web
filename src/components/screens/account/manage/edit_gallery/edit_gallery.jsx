@@ -15,7 +15,7 @@ import { v4 } from "uuid";
 import { Trash, TrashFill } from "react-bootstrap-icons";
 import LoadingScreen from "@/components/ui/loading/loading";
 
-const EditGallery = () => {
+const EditGallery = ({ setCurrentScreen }) => {
   const [file, setFile] = useState(null);
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -77,46 +77,56 @@ const EditGallery = () => {
   };
 
   return (
-    <div className={styles.cont}>
-      {isLoading && <LoadingScreen />}
-      <CustomInput
-        type="file"
-        onChange={(e) => {
-          setFile(e.target.files[0]);
+    <>
+      <br />
+      <CustomButton
+        clickHandler={() => {
+          setCurrentScreen("users");
         }}
-        accept=".jpg, .png, .jpeg"
-        maxLength={1}
-      />
-      <br />
-      {file && (
-        <div className={styles.preview}>
-          <Image src={URL.createObjectURL(file)} height={200} />
-          &nbsp; &nbsp;
-          <CustomButton clickHandler={uploadImage} isLoading={isLoading}>
-            Upload
-          </CustomButton>
-        </div>
-      )}
-      <br />
-      <br />
-      <h3>All Images</h3>
-      <Row>
-        {images.map((img) => {
-          return (
-            <Col key={img.id} xs={6} md={4} lg={3}>
-              <div className={styles.img}>
-                <Image src={img.imgUrl} fluid />
-                <TrashFill
-                  onClick={() => {
-                    deleteImage(img);
-                  }}
-                />
-              </div>
-            </Col>
-          );
-        })}
-      </Row>
-    </div>
+      >
+        Manage Users
+      </CustomButton>
+      <div className={styles.cont}>
+        {isLoading && <LoadingScreen />}
+        <CustomInput
+          type="file"
+          onChange={(e) => {
+            setFile(e.target.files[0]);
+          }}
+          accept=".jpg, .png, .jpeg"
+          maxLength={1}
+        />
+        <br />
+        {file && (
+          <div className={styles.preview}>
+            <Image src={URL.createObjectURL(file)} height={200} />
+            &nbsp; &nbsp;
+            <CustomButton clickHandler={uploadImage} isLoading={isLoading}>
+              Upload
+            </CustomButton>
+          </div>
+        )}
+        <br />
+        <br />
+        <h3>All Images</h3>
+        <Row>
+          {images.map((img) => {
+            return (
+              <Col key={img.id} xs={6} md={4} lg={3}>
+                <div className={styles.img}>
+                  <Image src={img.imgUrl} fluid />
+                  <TrashFill
+                    onClick={() => {
+                      deleteImage(img);
+                    }}
+                  />
+                </div>
+              </Col>
+            );
+          })}
+        </Row>
+      </div>
+    </>
   );
 };
 

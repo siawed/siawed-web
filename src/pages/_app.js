@@ -19,15 +19,10 @@ export default function App({ Component, pageProps }) {
 
   const [currentUser, setCurrentUser] = useState(undefined);
 
-  // console.log();
-
   useEffect(() => {
     onAuthStateChanged(auth, async (session, x) => {
       if (session) {
-        const user = await getDataByQuery("users", ["uid", "==", session.uid]);
-        if (user?.[0]) {
-          setCurrentUser(user?.[0]);
-        }
+        setCurrentUser(session);
       } else {
         setCurrentUser(null);
       }

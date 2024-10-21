@@ -6,7 +6,7 @@ import { Google } from "react-bootstrap-icons";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/libs/firebase/firebase";
 
-const LoginForm = ({ redirectUrl, router }) => {
+const LoginForm = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -17,16 +17,21 @@ const LoginForm = ({ redirectUrl, router }) => {
   const login = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
-      await signInWithEmailAndPassword(auth, values.email, values.password);
-    } catch (error) {
-      if (error.message.includes("invalid-credential")) {
-        alert("invalid-credential");
-        setValues({
-          email: "",
-          password: "",
-        });
+      if (values.email === process.env.NEXT_PUBLIC_SFZOM_QEF) {
+        await signInWithEmailAndPassword(auth, values.email, values.password);
+      } else {
+        throw new Error("invalid-credential");
       }
+    } catch (error) {
+      alert(error.message);
+
+      setValues({
+        email: "",
+        password: "",
+      });
+
       console.log(error.message);
     } finally {
       setIsLoading(false);

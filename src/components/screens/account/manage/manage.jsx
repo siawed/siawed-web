@@ -137,7 +137,9 @@ const ManageAccount = () => {
             </Accordion>
           </div>
         )}
-        {currentScreen === "gallery" && <EditGallery />}
+        {currentScreen === "gallery" && (
+          <EditGallery setCurrentScreen={setCurrentScreen} />
+        )}
       </CustomContainer>
     </main>
   );
