@@ -6,7 +6,7 @@ import { Google } from "react-bootstrap-icons";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/libs/firebase/firebase";
 
-const LoginForm = ({ setIsLogin, redirectUrl, router, setIsLoginScreen }) => {
+const LoginForm = ({ redirectUrl, router }) => {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -19,11 +19,6 @@ const LoginForm = ({ setIsLogin, redirectUrl, router, setIsLoginScreen }) => {
     setIsLoading(true);
     try {
       await signInWithEmailAndPassword(auth, values.email, values.password);
-      if (redirectUrl) {
-        router.push(`/${redirectUrl}`);
-      } else {
-        setIsLoginScreen(false);
-      }
     } catch (error) {
       if (error.message.includes("invalid-credential")) {
         alert("invalid-credential");
@@ -42,7 +37,7 @@ const LoginForm = ({ setIsLogin, redirectUrl, router, setIsLoginScreen }) => {
     <>
       <form onSubmit={login}>
         <div>
-          <h2>Member Login</h2>
+          <h2>Admin Login</h2>
           <div>
             <label>Email</label>
             <CustomInput
@@ -89,7 +84,7 @@ const LoginForm = ({ setIsLogin, redirectUrl, router, setIsLoginScreen }) => {
           >
             Login
           </CustomButton>
-          <div className={styles.opt}>
+          {/* <div className={styles.opt}>
             <p>
               Don&apos;t have account?{" "}
               <span
@@ -103,7 +98,7 @@ const LoginForm = ({ setIsLogin, redirectUrl, router, setIsLoginScreen }) => {
             <p>
               <span>Forgot Password?</span>
             </p>
-          </div>
+          </div> */}
         </div>
       </form>
     </>

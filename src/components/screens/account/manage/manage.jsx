@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "./manage.module.scss";
 import CustomContainer from "@/components/ui/custom_container/custom_container";
-import { Col, Row } from "react-bootstrap";
-import { getDataByQuery } from "@/libs/firebase/firebase";
+import { Accordion, Col, Row } from "react-bootstrap";
+import { getAllData, getDataByQuery } from "@/libs/firebase/firebase";
 
 import { AgGridReact } from "ag-grid-react"; // React Data Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the Data Grid
@@ -10,16 +10,15 @@ import "ag-grid-community/styles/ag-theme-quartz.css";
 import CustomButton from "@/components/ui/custom_button/custom_button";
 
 const ManageAccount = ({ currentUser }) => {
-  const [donations, setDonations] = useState();
+  const [donations, setDonations] = useState([]);
+  const [users, setUsers] = useState([]);
   const fetchDonations = async () => {
     try {
-      const donationsRes = await getDataByQuery("donations", [
-        "uid",
-        "==",
-        currentUser?.uid,
-      ]);
+      const donationsRes = await getAllData("donations");
+      const usersRes = await getAllData("users");
 
       setDonations(donationsRes || []);
+      setUsers(usersRes || []);
     } catch (error) {
       console.log(error);
     }
@@ -31,43 +30,88 @@ const ManageAccount = ({ currentUser }) => {
 
   // Column Definitions: Defines the columns to be displayed.
   const colDefs = [
+    { field: "fullName" },
+    { field: "email" },
+    { field: "phoneNumber" },
+  ];
+  const donationColDefs = [
     { field: "createdAt" },
+    { field: "fullName" },
     { field: "amount" },
     { field: "status" },
     { field: "plan" },
+    { field: "email" },
+    { field: "phoneNumber" },
+    { field: "transactionId" },
+    { field: "upiId" },
+    { field: "referenceNumber" },
   ];
 
   return (
     <main className={styles.ManageAccount}>
       <div className={styles.banner}>
-        <h1>My Account</h1>
+        <h1>Admin</h1>
       </div>
       <CustomContainer>
         <div className={styles.cont}>
-          <Row>
-            <Col xs={12} md={4}>
-              <div className={styles.profile}>
-                <h2>My Profile</h2>
-                <p>Full Name : {currentUser?.fullName}</p>
-                <p>Email : {currentUser?.email}</p>
-                <p>Phone Number : {currentUser?.phoneNumber}</p>
-              </div>
-            </Col>
-            <Col>
-              <div className={styles.profile}>
-                <h2>My Donations</h2>
-                <div
-                  className="ag-theme-quartz" // applying the Data Grid theme
-                  style={{ height: 200 }} // the Data Grid will fill the size of the parent container
-                >
-                  {donations?.[0] && (
-                    <AgGridReact rowData={donations} columnDefs={colDefs} />
-                  )}
+          <Accordion>
+            <Accordion.Item eventKey="0">
+              <Accordion.Header>Users</Accordion.Header>
+              <Accordion.Body>
+                <div className={styles.profile}>
+                  <h2>Users</h2>
+                  <div
+                    className="ag-theme-quartz" // applying the Data Grid theme
+                    style={{ height: 200 }} // the Data Grid will fill the size of the parent container
+                  >
+                    {donations?.[0] && (
+                      <AgGridReact rowData={users} columnDefs={colDefs} />
+                    )}
+                  </div>
                 </div>
-                <CustomButton href="/donate-us">Donate Now</CustomButton>
-              </div>
-            </Col>
-          </Row>
+              </Accordion.Body>
+            </Accordion.Item>
+            <br />
+            <Accordion.Item eventKey="1">
+              <Accordion.Header>Donations</Accordion.Header>
+              <Accordion.Body>
+                <div className={styles.profile}>
+                  <h2>Donations</h2>
+                  <div
+                    className="ag-theme-quartz" // applying the Data Grid theme
+                    style={{ height: 500 }} // the Data Grid will fill the size of the parent container
+                  >
+                    {donations?.[0] && (
+                      <AgGridReact
+                        rowData={donations}
+                        columnDefs={donationColDefs}
+                      />
+                    )}
+                  </div>
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+            <br />
+            <Accordion.Item eventKey="2">
+              <Accordion.Header>Subscribers</Accordion.Header>
+              <Accordion.Body>
+                <div className={styles.profile}>
+                  <h2>Subscribers</h2>
+                  <div
+                    className="ag-theme-quartz" // applying the Data Grid theme
+                    style={{ height: 500 }} // the Data Grid will fill the size of the parent container
+                  >
+                    {donations?.[0] && (
+                      <AgGridReact
+                        rowData={donations}
+                        columnDefs={donationColDefs}
+                      />
+                    )}
+                  </div>
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
         </div>
       </CustomContainer>
     </main>

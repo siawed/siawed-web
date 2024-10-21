@@ -66,7 +66,7 @@ const Header = ({ currentUser }) => {
                   );
                 })}
                 {!currentUser ? (
-                  <CustomButton href="/donate-us">Donate Us</CustomButton>
+                  <CustomButton href="/account">Login</CustomButton>
                 ) : (
                   <div>
                     <CustomButton href="/account">My Account</CustomButton>
