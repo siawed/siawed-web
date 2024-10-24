@@ -8,6 +8,7 @@ import Head from "next/head";
 import Aos from "aos";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth, getDataByQuery } from "@/libs/firebase/firebase";
+import { Image } from "react-bootstrap";
 
 export default function App({ Component, pageProps }) {
   useEffect(() => {
@@ -34,15 +35,23 @@ export default function App({ Component, pageProps }) {
     });
   }, []);
 
+  const isConstruction = true;
+
   return (
     <>
       <Head>
         <title>SIAWED</title>
       </Head>
       <main className={` ${styles.body}`}>
-        <Layout currentUser={currentUser}>
-          <Component {...pageProps} currentUser={currentUser} />
-        </Layout>
+        {isConstruction ? (
+          <div className={styles.ucc}>
+            <Image src="/assets/under_construction.svg" />
+          </div>
+        ) : (
+          <Layout currentUser={currentUser}>
+            <Component {...pageProps} currentUser={currentUser} />
+          </Layout>
+        )}
       </main>
     </>
   );
